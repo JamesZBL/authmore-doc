@@ -13,7 +13,11 @@ module.exports = {
       "/guide/": [{
         title: "快速入门",
         collapsable: false,
-        children: ["", "manage"]
+        children: [
+          "",
+          "manage",
+          "create-client"
+        ]
       }]
     }
   }
