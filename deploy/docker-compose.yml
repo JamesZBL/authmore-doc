@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  authmore-doc:
+  doc:
     image: registry-vpc.cn-beijing.aliyuncs.com/letec/authmore-doc
     build:
       context: ..
