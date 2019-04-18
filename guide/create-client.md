@@ -73,7 +73,82 @@ authmore:
     token-issue-url: http://localhost:8080/oauth/token
     authorize-url: http://localhost:8080/authorize
     redirect-uri: http://localhost:8090/inbox
-    scope: PROFILE,EMAIL
 ```
 
-其中的 ``client-id`` 及 ``client-secret`` 是刚才在平台注册应用时获取的， ``token-issue-url`` 为平台的 token 签发端口，``redirect-uri`` 为用户授权后携带授权码重定向到客户端的接口，这里设置为收件箱页面的接口，也就是稍候我们将要在这个项目中编写的接口，项目将
+其中的 ``client-id`` 及 ``client-secret`` 是刚才在平台注册应用时获取的， ``token-issue-url`` 为平台的 token 签发端口，``redirect-uri`` 为用户授权后携带授权码重定向到客户端的接口，这里设置为收件箱页面的接口，也就是稍候我们将要在这个项目中编写的接口，这个邮件阅读器**客户端**将访问邮件**服务**的**用户资料**及**邮件**两部分数据。
+
+首先用类定义数据传输格式：
+
+```java
+/**
+ * 邮件
+ */
+public class Email {
+
+    private String subject;
+    private String from;
+    private String to;
+    private String content;
+
+    // setters & getters ...
+}
+
+/**
+ * 收件箱
+ */
+public class Inbox {
+
+    private List<Email> emails;
+
+    public Inbox(List<Email> emails) {
+        this.emails = emails;
+    }
+
+    // setters & getters ...
+}
+```
+
+## 授权引导与令牌请求
+
+编写一个获取收件箱中邮件的接口 ``/inbox``，接口将返回 ``JSON`` 格式的数据：
+
+```java
+@RestController
+public class InboxEndpoint {
+
+    private AuthorizationCodeTokenManager tokenManager;
+    private AuthorizationTemplate authorizationTemplate;
+    private static final String SCOPES = "PROFILE,EMAIL";
+
+    @Autowired
+    public InboxEndpoint(
+            AuthorizationCodeTokenManager tokenManager,
+            AuthorizationTemplate authorizationTemplate) {
+        this.tokenManager = tokenManager;
+        this.authorizationTemplate = authorizationTemplate;
+    }
+
+    @GetMapping("/inbox")
+    public Object inbox(
+            @RequestParam(value = "code", required = false) String code,
+            HttpServletResponse response) throws IOException {
+
+        /** 首先将用户的请求重定向到认证平台，引导用户授权 **/
+        if (StringUtils.isEmpty(code)) {
+            authorizationTemplate.redirectToUserAuthorize(
+                    response, OAuthProperties.ResponseTypes.CODE, SCOPES);
+            return null;
+        }
+        /** 构造请求参数 **/
+        Map<String, String> params = new HashMap<>();
+        /** 认证平台重定向回此接口时所携带的授权码 **/
+        params.put("code", code);
+        /** 携带授权码获取 token **/
+        TokenResponse token = tokenManager.getToken(SCOPES, params);
+        /** 获取收件箱中的邮件 **/
+        ClientRestTemplate restTemplate =
+                new ClientRestTemplate(token.getAccess_token());
+        return restTemplate.getForObject("http://localhost:8091", Inbox.class);
+    }
+}
+```
