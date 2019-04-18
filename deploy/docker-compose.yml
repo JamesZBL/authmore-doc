@@ -10,7 +10,7 @@ services:
     networks:
       - authmore-doc
     ports:
-      - "3001:3001"
+      - "3001:80"
 
 networks:
   authmore-doc:
