@@ -6,7 +6,6 @@ services:
     build:
       context: ..
       dockerfile: Dockerfile
-    container_name: authmore-doc
     restart: unless-stopped
     networks:
       - authmore-doc
