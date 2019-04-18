@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  authmore-doc:
+    image: registry-vpc.cn-beijing.aliyuncs.com/letec/authmore-doc
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    container_name: authmore-doc
+    restart: unless-stopped
+    networks:
+      - authmore-doc
+    ports:
+      - "3001:3001"
+
+networks:
+  authmore-doc:
