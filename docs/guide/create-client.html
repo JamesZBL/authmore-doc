@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>创建客户端 | Authmore</title>
+    <meta name="description" content="基于 OAuth2.0 协议的跨域认证授权开发套件">
+    <link>
+  <undefined></undefined>
+    
+    <link rel="preload" href="/assets/css/0.styles.26516266.css" as="style"><link rel="preload" href="/assets/js/app.b86e263c.js" as="script"><link rel="preload" href="/assets/js/5.f3359226.js" as="script"><link rel="prefetch" href="/assets/js/2.12651511.js"><link rel="prefetch" href="/assets/js/3.bc15ee29.js"><link rel="prefetch" href="/assets/js/4.98ab25e1.js"><link rel="prefetch" href="/assets/js/6.af3e42d4.js"><link rel="prefetch" href="/assets/js/7.ebccead0.js"><link rel="prefetch" href="/assets/js/8.444600e7.js"><link rel="prefetch" href="/assets/js/9.d93e2f94.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.26516266.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Authmore</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>快速入门</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/guide/" class="sidebar-link">开始使用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/#安装" class="sidebar-link">安装</a></li></ul></li><li><a href="/guide/manage.html" class="sidebar-link">认证平台</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/manage.html#用户登录" class="sidebar-link">用户登录</a></li></ul></li><li><a href="/guide/create-client.html" class="active sidebar-link">创建客户端</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/create-client.html#在平台上注册" class="sidebar-link">在平台上注册</a></li><li class="sidebar-sub-header"><a href="/guide/create-client.html#创建项目" class="sidebar-link">创建项目</a></li><li class="sidebar-sub-header"><a href="/guide/create-client.html#编写配置" class="sidebar-link">编写配置</a></li><li class="sidebar-sub-header"><a href="/guide/create-client.html#授权引导与令牌请求" class="sidebar-link">授权引导与令牌请求</a></li></ul></li><li><a href="/guide/create-resource.html" class="sidebar-link">创建资源服务</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/create-resource.html#在平台上注册" class="sidebar-link">在平台上注册</a></li><li class="sidebar-sub-header"><a href="/guide/create-resource.html#创建项目" class="sidebar-link">创建项目</a></li><li class="sidebar-sub-header"><a href="/guide/create-resource.html#编写配置" class="sidebar-link">编写配置</a></li><li class="sidebar-sub-header"><a href="/guide/create-resource.html#编写资源接口" class="sidebar-link">编写资源接口</a></li></ul></li><li><a href="/guide/create-user.html" class="sidebar-link">访问资源</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/create-user.html#注册用户" class="sidebar-link">注册用户</a></li><li class="sidebar-sub-header"><a href="/guide/create-user.html#授权并访问资源" class="sidebar-link">授权并访问资源</a></li></ul></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="创建客户端"><a href="#创建客户端" aria-hidden="true" class="header-anchor">#</a> 创建客户端</h1> <p>OAuth2.0 协议中包含了四种基本的认证模式，即授权码模式（Authorization Code）、密码模式（Password）、客户端凭证模式（Client Credentials）和简化模式（Implicit）。其中，授权码模式是数据交换步骤最多的，同时也是最安全的，最适合开放平台及第三方的认证授权方案。
+这里的应用及具备访问认证平台下某个资源服务的客户端。</p> <h2 id="在平台上注册"><a href="#在平台上注册" aria-hidden="true" class="header-anchor">#</a> 在平台上注册</h2> <p>现在我们以授权码模式为例，创建一个<strong>邮件阅读器</strong>应用，它在 OAuth 协议中以客户端的身份存在，是用户数据的访问者，也就是认证和授权的主要对象。
+邮件应用作为<strong>客户端</strong>访问作为<strong>资源服务</strong>的<strong>邮箱</strong>应用中的数据，阅读器用户就需要使用邮箱应用的身份凭证为阅读器应用授权，只有用户明确允许阅读器应用访问该用户的邮箱内容时，这个读访问是合法的。Authmore 所做的正是如何保证邮箱应用中的数据总是合法地被访问：认证平台在得到用户的确认后为阅读器应用颁发凭证，邮箱服务通过 Web API 和认证平台进行通信，来验证阅读器所提供凭证的有效性，最终决定是否对访问给予许可。</p> <p>进入<strong>创建应用</strong>页，输入“邮件阅读器”，进入下一步，填写应用的详情。该应用作为第三方应用的身份，将对平台下的资源服务“邮箱”进行数据访问，<strong>邮箱</strong>资源的<strong>资源ID</strong>设计为<code>MAILBOX</code>，并且限制其访问权限为 <code>READ</code>；它仅被允许访问用户资料以及收件箱中的邮件这两部分数据，所以限制其访问范围为<code>PROFILE</code> 及 <code>EMAIL</code>。</p> <p><strong>应用名称</strong> <img src="/img/client_name.png" alt="应用名称"> <strong>应用详情</strong> <img src="/img/client_details.png" alt="应用详情"></p> <p>点击提交后，将生成唯一的 AppID 及 AppSecret（私钥）：</p> <p><img src="/img/client_result.png" alt="应用详情"></p> <div class="tip custom-block"><p class="custom-block-title">私钥</p> <p>为安全起见，私钥只限该应用的服务端在获取 token 时使用，且需妥善保存，一定不要下发到客户端（终端）应用，</p></div> <h2 id="创建项目"><a href="#创建项目" aria-hidden="true" class="header-anchor">#</a> 创建项目</h2> <p>使用 Maven 或 <strong>Gradle (推荐)</strong> 创建一个 <strong>Spring Boot</strong> 项目，如果你对它还不了解，请参考 <a href="https://spring.io/projects/spring-boot" target="_blank" rel="noopener noreferrer">Spring Boot 官方文档<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> Gradle 为例，创建完成后在 <code>build.gradle</code> 文件中的 dependencies 块中引入 Authmore 的客户端 SDK 的依赖，最终完整内容：</p> <div class="language-groovy extra-class"><pre class="language-groovy"><code>plugins <span class="token punctuation">{</span>
+    id <span class="token string">'java'</span>
+    id <span class="token string">'org.springframework.boot'</span> version <span class="token string">'2.1.3.RELEASE'</span>
+<span class="token punctuation">}</span>
+
+apply plugin<span class="token punctuation">:</span> <span class="token string">'io.spring.dependency-management'</span>
+
+group <span class="token operator">=</span> <span class="token string">'com.github.jameszbl'</span>
+version <span class="token operator">=</span> <span class="token string">'0.0.1-SNAPSHOT'</span>
+sourceCompatibility <span class="token operator">=</span> <span class="token string">'1.8'</span>
+
+repositories <span class="token punctuation">{</span>
+    <span class="token function">mavenLocal</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token function">mavenCentral</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+dependencies <span class="token punctuation">{</span>
+    # Authmore 的客户端 SDK
+    implementation <span class="token string">'com.github.jameszbl:authmore-client-springboot-starter:1.0-RC'</span>
+    implementation <span class="token string">'org.springframework.boot:spring-boot-starter-web'</span>
+    testImplementation <span class="token string">'org.springframework.boot:spring-boot-starter-test'</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>进入 <code>src/main/resources</code> 目录，我们使用 <code>yml</code> 格式的配置文件，如果创建好的项目中出现的配置文件是 <code>application.properties</code>，可以直接将后缀改为 <code>.yml</code>。</p> <h2 id="编写配置"><a href="#编写配置" aria-hidden="true" class="header-anchor">#</a> 编写配置</h2> <div class="tip custom-block"><p class="custom-block-title">接口</p> <p>Authmore 认证平台的 token 签发端口的 uri 为 <code>/oauth/token</code>，用户的页面授权端口 uri 为 <code>/authorize</code></p></div> <p>修改 <code>application.yml</code> 文件的内容为：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8090</span>
+
+<span class="token key atrule">authmore</span><span class="token punctuation">:</span>
+  <span class="token key atrule">client</span><span class="token punctuation">:</span>
+    <span class="token key atrule">client-id</span><span class="token punctuation">:</span> 5cb7e7bcee173c60c379e04e
+    <span class="token key atrule">client-secret</span><span class="token punctuation">:</span> afLTqlcRUr32UC3nWiUNIMsfOmVlzuzX
+    <span class="token key atrule">token-issue-url</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span>8080/oauth/token
+    <span class="token key atrule">authorize-url</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span>8080/authorize
+    <span class="token key atrule">redirect-uri</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span>8090/inbox
+</code></pre></div><p>其中的 <code>client-id</code> 及 <code>client-secret</code> 是刚才在平台注册应用时获取的， <code>token-issue-url</code> 为平台的 token 签发端口，<code>redirect-uri</code> 为用户授权后携带授权码重定向到客户端的接口，这里设置为收件箱页面的接口，也就是稍候我们将要在这个项目中编写的接口，这个邮件阅读器<strong>客户端</strong>将访问邮件<strong>服务</strong>的<strong>用户资料</strong>及<strong>邮件</strong>两部分数据。</p> <p>首先用类定义数据传输格式：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * 邮件
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Email</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">String</span> subject<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> from<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> <span class="token keyword">to</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> content<span class="token punctuation">;</span>
+
+    <span class="token comment">// setters &amp; getters ...</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * 收件箱
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Inbox</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Email</span><span class="token punctuation">&gt;</span></span> emails<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Inbox</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Email</span><span class="token punctuation">&gt;</span></span> emails<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>emails <span class="token operator">=</span> emails<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// setters &amp; getters ...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="授权引导与令牌请求"><a href="#授权引导与令牌请求" aria-hidden="true" class="header-anchor">#</a> 授权引导与令牌请求</h2> <p>编写一个获取收件箱中邮件的接口 <code>/inbox</code>，接口将返回 <code>JSON</code> 格式的数据：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">InboxEndpoint</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token class-name">AuthorizationCodeTokenManager</span> tokenManager<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">AuthorizationTemplate</span> authorizationTemplate<span class="token punctuation">;</span>
+
+    <span class="token comment">/** 授权作用域 **/</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">String</span> SCOPES <span class="token operator">=</span> <span class="token string">&quot;PROFILE,EMAIL&quot;</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">public</span> <span class="token class-name">InboxEndpoint</span><span class="token punctuation">(</span>
+            <span class="token class-name">AuthorizationCodeTokenManager</span> tokenManager<span class="token punctuation">,</span>
+            <span class="token class-name">AuthorizationTemplate</span> authorizationTemplate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>tokenManager <span class="token operator">=</span> tokenManager<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>authorizationTemplate <span class="token operator">=</span> authorizationTemplate<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/inbox&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">inbox</span><span class="token punctuation">(</span>
+            <span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">&quot;code&quot;</span><span class="token punctuation">,</span> required <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token class-name">String</span> code<span class="token punctuation">,</span>
+            <span class="token class-name">HttpServletResponse</span> response<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
+
+        <span class="token comment">/** 首先将用户的请求重定向到认证平台，引导用户授权 **/</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            authorizationTemplate<span class="token punctuation">.</span><span class="token function">redirectToUserAuthorize</span><span class="token punctuation">(</span>
+                    response<span class="token punctuation">,</span> <span class="token class-name">OAuthProperties</span><span class="token punctuation">.</span><span class="token class-name">ResponseTypes</span><span class="token punctuation">.</span>CODE<span class="token punctuation">,</span> SCOPES<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">/** 构造请求参数 **/</span>
+        <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> params <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">/** 认证平台重定向回此接口时所携带的授权码 **/</span>
+        params<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">&quot;code&quot;</span><span class="token punctuation">,</span> code<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">/** 携带授权码获取 token **/</span>
+        <span class="token class-name">TokenResponse</span> token <span class="token operator">=</span> tokenManager<span class="token punctuation">.</span><span class="token function">getToken</span><span class="token punctuation">(</span>SCOPES<span class="token punctuation">,</span> params<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">/** 获取收件箱中的邮件 **/</span>
+        <span class="token class-name">ClientRestTemplate</span> restTemplate <span class="token operator">=</span>
+                <span class="token keyword">new</span> <span class="token class-name">ClientRestTemplate</span><span class="token punctuation">(</span>token<span class="token punctuation">.</span><span class="token function">getAccess_token</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> restTemplate<span class="token punctuation">.</span><span class="token function">getForObject</span><span class="token punctuation">(</span><span class="token string">&quot;http://localhost:8091&quot;</span><span class="token punctuation">,</span> <span class="token class-name">Inbox</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/guide/manage.html" class="prev">
+          认证平台
+        </a></span> <span class="next"><a href="/guide/create-resource.html">
+          创建资源服务
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.b86e263c.js" defer></script><script src="/assets/js/5.f3359226.js" defer></script>
+  </body>
+</html>

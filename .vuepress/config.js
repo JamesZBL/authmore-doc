@@ -5,7 +5,7 @@ module.exports = {
   dest: "docs",
   base: "/",
   head: ['link', {
-    rel: 'icon', href: '/favicon.ico'
+    rel: 'icon', href: '/img/favicon.ico'
   }],
   themeConfig: {
     displayAllHeaders: true,

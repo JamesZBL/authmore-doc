@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>认证平台 | Authmore</title>
+    <meta name="description" content="基于 OAuth2.0 协议的跨域认证授权开发套件">
+    <link>
+  <undefined></undefined>
+    
+    <link rel="preload" href="/assets/css/0.styles.26516266.css" as="style"><link rel="preload" href="/assets/js/app.b86e263c.js" as="script"><link rel="preload" href="/assets/js/8.444600e7.js" as="script"><link rel="prefetch" href="/assets/js/2.12651511.js"><link rel="prefetch" href="/assets/js/3.bc15ee29.js"><link rel="prefetch" href="/assets/js/4.98ab25e1.js"><link rel="prefetch" href="/assets/js/5.f3359226.js"><link rel="prefetch" href="/assets/js/6.af3e42d4.js"><link rel="prefetch" href="/assets/js/7.ebccead0.js"><link rel="prefetch" href="/assets/js/9.d93e2f94.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.26516266.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Authmore</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>快速入门</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/guide/" class="sidebar-link">开始使用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/#安装" class="sidebar-link">安装</a></li></ul></li><li><a href="/guide/manage.html" class="active sidebar-link">认证平台</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/manage.html#用户登录" class="sidebar-link">用户登录</a></li></ul></li><li><a href="/guide/create-client.html" class="sidebar-link">创建客户端</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/create-client.html#在平台上注册" class="sidebar-link">在平台上注册</a></li><li class="sidebar-sub-header"><a href="/guide/create-client.html#创建项目" class="sidebar-link">创建项目</a></li><li class="sidebar-sub-header"><a href="/guide/create-client.html#编写配置" class="sidebar-link">编写配置</a></li><li class="sidebar-sub-header"><a href="/guide/create-client.html#授权引导与令牌请求" class="sidebar-link">授权引导与令牌请求</a></li></ul></li><li><a href="/guide/create-resource.html" class="sidebar-link">创建资源服务</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/create-resource.html#在平台上注册" class="sidebar-link">在平台上注册</a></li><li class="sidebar-sub-header"><a href="/guide/create-resource.html#创建项目" class="sidebar-link">创建项目</a></li><li class="sidebar-sub-header"><a href="/guide/create-resource.html#编写配置" class="sidebar-link">编写配置</a></li><li class="sidebar-sub-header"><a href="/guide/create-resource.html#编写资源接口" class="sidebar-link">编写资源接口</a></li></ul></li><li><a href="/guide/create-user.html" class="sidebar-link">访问资源</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/create-user.html#注册用户" class="sidebar-link">注册用户</a></li><li class="sidebar-sub-header"><a href="/guide/create-user.html#授权并访问资源" class="sidebar-link">授权并访问资源</a></li></ul></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="认证平台"><a href="#认证平台" aria-hidden="true" class="header-anchor">#</a> 认证平台</h1> <h2 id="用户登录"><a href="#用户登录" aria-hidden="true" class="header-anchor">#</a> 用户登录</h2> <div class="tip custom-block"><p class="custom-block-title">用户密码</p> <p>鉴于安全原因，root 用户的默认密码会在容器启动时随机生成并打印在控制台中，当然你也可以在登录后创建新的管理员用户。
+这个设计的灵感来自于 <a href="https://jenkins.io/" target="_blank" rel="noopener noreferrer">Jenkins<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>，它是目前最流行的的持续集成工具之一。</p></div> <p>从容器的启动日志中获取 root 用户的密码，它可能是这样的：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>Authmore root password: eVzhBfnWb7djJH47THwOZ06EWiUzw1kV
+</code></pre></div><p>访问本地的 8080 端口进入平台登录页面：</p> <p><img src="/img/signin.png" alt></p> <p>使用 root 用户以及刚刚获取的密码登录：</p> <p><img src="/img/home.png" alt></p></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/guide/" class="prev router-link-active">
+          开始使用
+        </a></span> <span class="next"><a href="/guide/create-client.html">
+          创建客户端
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.b86e263c.js" defer></script><script src="/assets/js/8.444600e7.js" defer></script>
+  </body>
+</html>

@@ -15,8 +15,8 @@ Authmore root password: eVzhBfnWb7djJH47THwOZ06EWiUzw1kV
 
 访问本地的 8080 端口进入平台登录页面：
 
-![](/signin.png)
+![](/img/signin.png)
 
 使用 root 用户以及刚刚获取的密码登录：
 
-![](/home.png)
+![](/img/home.png)

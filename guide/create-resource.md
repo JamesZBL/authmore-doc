@@ -6,7 +6,7 @@
 
 在平台上创建一个名为**邮箱**的应用，创建这个作用是资源服务需要向认证平台发送请求来校验客户端携带的 token，这个校验过程也是需要校验权限的，所以采用客户端密钥模式（Client Credentials），最终将同样得到一个 AppSecret 和一个 AppSecret。
 
-![创建资源服务应用](/resource_details.png)
+![创建资源服务应用](/img/resource_details.png)
 
 ## 创建项目
 

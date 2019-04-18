@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>访问资源 | Authmore</title>
+    <meta name="description" content="基于 OAuth2.0 协议的跨域认证授权开发套件">
+    <link>
+  <undefined></undefined>
+    
+    <link rel="preload" href="/assets/css/0.styles.26516266.css" as="style"><link rel="preload" href="/assets/js/app.b86e263c.js" as="script"><link rel="preload" href="/assets/js/7.ebccead0.js" as="script"><link rel="prefetch" href="/assets/js/2.12651511.js"><link rel="prefetch" href="/assets/js/3.bc15ee29.js"><link rel="prefetch" href="/assets/js/4.98ab25e1.js"><link rel="prefetch" href="/assets/js/5.f3359226.js"><link rel="prefetch" href="/assets/js/6.af3e42d4.js"><link rel="prefetch" href="/assets/js/8.444600e7.js"><link rel="prefetch" href="/assets/js/9.d93e2f94.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.26516266.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Authmore</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>快速入门</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/guide/" class="sidebar-link">开始使用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/#安装" class="sidebar-link">安装</a></li></ul></li><li><a href="/guide/manage.html" class="sidebar-link">认证平台</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/manage.html#用户登录" class="sidebar-link">用户登录</a></li></ul></li><li><a href="/guide/create-client.html" class="sidebar-link">创建客户端</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/create-client.html#在平台上注册" class="sidebar-link">在平台上注册</a></li><li class="sidebar-sub-header"><a href="/guide/create-client.html#创建项目" class="sidebar-link">创建项目</a></li><li class="sidebar-sub-header"><a href="/guide/create-client.html#编写配置" class="sidebar-link">编写配置</a></li><li class="sidebar-sub-header"><a href="/guide/create-client.html#授权引导与令牌请求" class="sidebar-link">授权引导与令牌请求</a></li></ul></li><li><a href="/guide/create-resource.html" class="sidebar-link">创建资源服务</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/create-resource.html#在平台上注册" class="sidebar-link">在平台上注册</a></li><li class="sidebar-sub-header"><a href="/guide/create-resource.html#创建项目" class="sidebar-link">创建项目</a></li><li class="sidebar-sub-header"><a href="/guide/create-resource.html#编写配置" class="sidebar-link">编写配置</a></li><li class="sidebar-sub-header"><a href="/guide/create-resource.html#编写资源接口" class="sidebar-link">编写资源接口</a></li></ul></li><li><a href="/guide/create-user.html" class="active sidebar-link">访问资源</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/create-user.html#注册用户" class="sidebar-link">注册用户</a></li><li class="sidebar-sub-header"><a href="/guide/create-user.html#授权并访问资源" class="sidebar-link">授权并访问资源</a></li></ul></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="访问资源"><a href="#访问资源" aria-hidden="true" class="header-anchor">#</a> 访问资源</h1> <h2 id="注册用户"><a href="#注册用户" aria-hidden="true" class="header-anchor">#</a> 注册用户</h2> <p>登录认证平台，进入创建用户页，系统将默认生成一串随机密码（建议使用），填写用户名后点击提交。</p> <p><img src="/img/user_details.png" alt="创建用户"></p> <h2 id="授权并访问资源"><a href="#授权并访问资源" aria-hidden="true" class="header-anchor">#</a> 授权并访问资源</h2> <p>访问之前客户端中编写的获取收件箱邮件的接口，浏览器发出的请求将被重定向到 Authmore 认证平台的用户授权页，用户点击 <strong>同意</strong> 按钮后，认证平台将携带生成的 token 返回重定向响应，浏览器会携带此 token 继续访问之前的接口，最终将在浏览器中看到如下数据：</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;emails&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;from&quot;</span><span class="token operator">:</span> <span class="token string">&quot;James&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;to&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Tom&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;content&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Hello, Tom!&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;from&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Tom&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;to&quot;</span><span class="token operator">:</span> <span class="token string">&quot;James&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;content&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Hi, James!&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token property">&quot;from&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Tony&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;to&quot;</span><span class="token operator">:</span> <span class="token string">&quot;James&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;content&quot;</span><span class="token operator">:</span> <span class="token string">&quot;James, Let's go hiking!&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/guide/create-resource.html" class="prev">
+          创建资源服务
+        </a></span> <!----></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.b86e263c.js" defer></script><script src="/assets/js/7.ebccead0.js" defer></script>
+  </body>
+</html>
