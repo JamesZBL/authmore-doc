@@ -6,7 +6,7 @@
 
 在平台上创建一个名为**邮箱**的应用，创建这个作用是资源服务需要向认证平台发送请求来校验客户端携带的 token，这个校验过程也是需要校验权限的，所以采用客户端密钥模式（Client Credentials），最终将同样得到一个 AppSecret 和一个 AppSecret。
 
-![](/resource_details.png)
+![创建资源服务应用](/resource_details.png)
 
 ## 创建项目
 
@@ -63,6 +63,10 @@ authmore:
 ```
 
 ## 编写资源接口
+
+::: tip 鉴权
+Authmore 中提供了 **`@ScopeRequired`** 和 **`@AuthorityRequired`** 注解用来校验访问者是否具备访问该资源的资格，前者用来校验访问范围是否合法，后者校验是否具备某个权限。
+:::
 
 在此项目中我们复用服务端创建的数据传输对象类，即 `Email` 和 `Inbox`，下面编写用于获取收件箱资源的接口，使用模拟的邮件数据：
 

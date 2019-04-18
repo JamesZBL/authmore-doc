@@ -17,7 +17,8 @@ module.exports = {
           "",
           "manage",
           "create-client",
-          "create-resource"
+          "create-resource",
+          "create-user"
         ]
       }]
     }
