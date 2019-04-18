@@ -16,7 +16,8 @@ module.exports = {
         children: [
           "",
           "manage",
-          "create-client"
+          "create-client",
+          "create-resource"
         ]
       }]
     }
