@@ -12,3 +12,16 @@ features:
   details: 基于 React.js 和 Ant Design 的认证中心管理系统，帮助开发者随时随地地管理应用，掌控平台动态。
 footer: Apache2 Licensed | Copyright © 2019 郑保乐
 ---
+
+**最新版本**
+```
+# 认证平台 Docker 镜像
+registry.cn-beijing.aliyuncs.com/authmore/admin:latest
+```
+```groovy
+# 客户端 SDK
+implementation 'com.github.jameszbl:authmore-client-springboot-starter:1.0-RC'
+
+# 资源服务 SDK
+implementation 'com.github.jameszbl:authmore-resource-springboot-starter:1.0-RC'
+```

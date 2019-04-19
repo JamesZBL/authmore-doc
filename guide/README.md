@@ -2,15 +2,6 @@
 
 [Authmore](https://gitee.com/zbl1996/authmore/) 是一个开源的、基于 OAuth2.0 打造的社会化网络下的跨应用认证授权开发套件，它的设计灵感来源于 [Spring Security](https://spring.io/projects/spring-security/)。它由应用认证平台、客户端 SDK 及资源服务端 SDK 组成，主要用于服务端应用的第三方登录、跨应用的用户数据交换时的认证，以及企业内部系统微服务的鉴权。
 
-**最新版本**
-```groovy
-# 客户端 SDK
-implementation 'com.github.jameszbl:authmore-client-springboot-starter:1.0-RC'
-
-# 资源服务 SDK
-implementation 'com.github.jameszbl:authmore-resource-springboot-starter:1.0-RC'
-```
-
 ## 安装
 
 ::: tip 环境准备
