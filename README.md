@@ -20,8 +20,8 @@ registry.cn-beijing.aliyuncs.com/authmore/admin:latest
 ```
 ```groovy
 # 客户端 SDK
-implementation 'com.github.jameszbl:authmore-client-springboot-starter:1.0-RC'
+implementation 'com.github.jameszbl:authmore-client-springboot-starter:1.0.6'
 
 # 资源服务 SDK
-implementation 'com.github.jameszbl:authmore-resource-springboot-starter:1.0-RC'
+implementation 'com.github.jameszbl:authmore-resource-springboot-starter:1.0.6'
 ```

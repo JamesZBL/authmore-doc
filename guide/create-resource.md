@@ -13,7 +13,7 @@
 和创建客户端应用类似，创建一个基于 `Spring Boot` 的 Gradle 项目，在 `build.gradle` 文件中加入如下依赖：
 
 ```groovy
-implementation 'com.github.jameszbl:authmore-resource-springboot-starter:1.0-RC'
+implementation 'com.github.jameszbl:authmore-resource-springboot-starter:1.0.6'
 ```
 
 最终的该文件的完整内容为：
@@ -36,7 +36,7 @@ repositories {
 
 dependencies {
     # Authmore 的资源服务端 SDK
-    implementation 'com.github.jameszbl:authmore-resource-springboot-starter:1.0-RC'
+    implementation 'com.github.jameszbl:authmore-resource-springboot-starter:1.0.6'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

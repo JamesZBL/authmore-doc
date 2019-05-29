@@ -46,7 +46,7 @@ repositories {
 
 dependencies {
     # Authmore 的客户端 SDK
-    implementation 'com.github.jameszbl:authmore-client-springboot-starter:1.0-RC'
+    implementation 'com.github.jameszbl:authmore-client-springboot-starter:1.0.6'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
