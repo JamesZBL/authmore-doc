@@ -22,7 +22,7 @@ registry.cn-beijing.aliyuncs.com/authmore/admin:latest
 <dependency>
     <groupId>com.github.jameszbl</groupId>
     <artifactId>authmore-client-springboot-starter</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
 </dependency>
 ```
 
@@ -31,6 +31,6 @@ registry.cn-beijing.aliyuncs.com/authmore/admin:latest
 <dependency>
     <groupId>com.github.jameszbl</groupId>
     <artifactId>authmore-resource-springboot-starter</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
 </dependency>
 ```
