@@ -15,7 +15,11 @@ footer: Apache2 Licensed | Copyright © 2019 郑保乐
 ### 最新版本
 * **认证平台 Doccker 镜像**
 ```
-registry.cn-beijing.aliyuncs.com/authmore/admin:latest
+jameszbl/authmore-platform:latest
+
+jameszbl/authmore-admin:latest
+
+jameszbl/authmore-ui:latest
 ```
 * **客户端 SDK**
 ```xml
