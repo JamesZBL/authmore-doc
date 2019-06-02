@@ -29,9 +29,7 @@ version: "3"
 
 services:
   platform:
-    image: registry.cn-beijing.aliyuncs.com/letec/authmore-platform
-    command: ["--spring.profiles.active=test"]
-    container_name: platform
+    image: jameszbl/authmore-platform
     restart: unless-stopped
     networks:
       - authmore
@@ -42,9 +40,7 @@ services:
       - redis
 
   admin:
-    image: registry.cn-beijing.aliyuncs.com/letec/authmore-admin
-    command: ["--spring.profiles.active=test"]
-    container_name: admin
+    image: jameszbl/authmore-admin
     restart: unless-stopped
     networks:
       - authmore
@@ -55,8 +51,7 @@ services:
       - redis
 
   authmore-ui:
-    image: registry.cn-beijing.aliyuncs.com/letec/authmore-ui
-    container_name: authmore-ui
+    image: jameszbl/authmore-ui
     restart: unless-stopped
     networks:
       - authmore
@@ -68,7 +63,6 @@ services:
   redis:
     image: redis
     restart: unless-stopped
-    container_name: authmore-redis
     networks:
       - authmore
     volumes:
@@ -77,7 +71,6 @@ services:
   mongo:
     image: mongo
     restart: unless-stopped
-    container_name: authmore-mongo
     networks:
       - authmore
     volumes:
