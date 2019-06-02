@@ -8,27 +8,89 @@
 认证平台需要在本机安装 Docker，如果你还没有了解过 Docker，请参考 [Docker 官网](https://docs.docker.com/install/)
 :::
 
-Authmore 提供了一个认证平台的 Docker 镜像，鉴于国内网络问题，该镜像目前托管在[阿里云容器镜像平台](https://cr.console.aliyun.com/cn-beijing/instances/images)，现在假设你已经熟悉 Docker 的使用了。
+Authmore 提供了一个认证平台的 Docker 镜像，该镜像目前托管在[Docker Hub](https://hub.docker.com)，现在假设你已经熟悉 Docker 的使用了。
 
-你可以执行这条命令来将 Authmore 认证平台的 Docker 镜像拉取到本地：
+你可以执行这条命令来将 Authmore 授权服务的 Docker 镜像拉取到本地：
 
 ```bash
-docker pull registry.cn-beijing.aliyuncs.com/authmore/admin:latest
+docker pull jameszbl/authmore-platform:latest
 ```
 
-现在开始使用 Docker 启动一个 Authmore 认证平台的容器
+另外 Authmore 提供了一套前后端分离的 Web 应用，用来对平台的客户端注册和用户数据进行管理，它们同样以 Docker 镜像打包好了，可以直接部署。
 
-::: tip 端口
-镜像默认暴露容器的 80 端口，你可以通过 -p 选项指定端口映射的规则
-:::
 ::: tip 外部依赖
-认证平台需要依托 MongoDB 和 Redis，因此需要通过 -e 选项指定 MongoDB 和 Redis 的主机名和端口号，参数根据实际环境而定
+Authmore 需要依托 MongoDB 和 Redis，因此推荐使用 docker-stack 或 docker-compose 来部署这套开放平台
 :::
 
-```bash
-docker run --name authmore-ui registry.cn-beijing.aliyuncs.com/authmore-ui:latest \
-  -p 80:8080 -e MONGO_HOST='172.10.0.1' -e MONGO_PORT='27017' \
-  -e REDIS_HOST='172.10.0.2' -e REDIS_PORT='6379'
+下面是 compose file：
+
+```yaml
+version: "3"
+
+services:
+  platform:
+    image: registry.cn-beijing.aliyuncs.com/letec/authmore-platform
+    command: ["--spring.profiles.active=test"]
+    container_name: platform
+    restart: unless-stopped
+    networks:
+      - authmore
+    ports:
+      - "8086:8086"
+    depends_on:
+      - mongo
+      - redis
+
+  admin:
+    image: registry.cn-beijing.aliyuncs.com/letec/authmore-admin
+    command: ["--spring.profiles.active=test"]
+    container_name: admin
+    restart: unless-stopped
+    networks:
+      - authmore
+    ports:
+      - "8083:8083"
+    depends_on:
+      - mongo
+      - redis
+
+  authmore-ui:
+    image: registry.cn-beijing.aliyuncs.com/letec/authmore-ui
+    container_name: authmore-ui
+    restart: unless-stopped
+    networks:
+      - authmore
+    ports:
+      - "3002:80"
+    depends_on:
+      - admin
+
+  redis:
+    image: redis
+    restart: unless-stopped
+    container_name: authmore-redis
+    networks:
+      - authmore
+    volumes:
+      - redis-data:/data
+
+  mongo:
+    image: mongo
+    restart: unless-stopped
+    container_name: authmore-mongo
+    networks:
+      - authmore
+    volumes:
+      - mongo-data:/data/db
+      - mongo-config:/data/configdb
+
+networks:
+  authmore:
+
+volumes:
+  mongo-data:
+  mongo-config:
+  redis-data:
 ```
 
-现在假设你已经成功地创建并启动了这个容器，并且容器的 80 端口映射到主机的 8080 端口。
+现在假设你已经成功地创建并启动了这几个容器，并且容器的端口映射都正确工作了。

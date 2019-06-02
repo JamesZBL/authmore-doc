@@ -70,8 +70,8 @@ authmore:
   client:
     client-id: 5cb7e7bcee173c60c379e04e
     client-secret: afLTqlcRUr32UC3nWiUNIMsfOmVlzuzX
-    token-issue-url: http://localhost:8080/oauth/token
-    authorize-url: http://localhost:8080/authorize
+    token-issue-url: http://localhost:8086/oauth/token
+    authorize-url: http://localhost:8086/authorize
     redirect-uri: http://localhost:8090/inbox
 ```
 

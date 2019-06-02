@@ -57,7 +57,7 @@ server:
 authmore:
   resource:
     resource-id: MAILBOX
-    token-info-url: http://localhost:8080/oauth/check_token
+    token-info-url: http://localhost:8086/oauth/check_token
     client-id: 5cb88433ee173c60c379e04f
     client-secret: 6LJTlUAfSo4TZhgRdAh2BC1hfUGROEpT
 ```

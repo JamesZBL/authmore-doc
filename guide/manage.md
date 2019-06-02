@@ -13,7 +13,7 @@
 Authmore root password: eVzhBfnWb7djJH47THwOZ06EWiUzw1kV
 ```
 
-访问本地的 8080 端口进入平台登录页面：
+访问本地的 3002 端口进入平台登录页面：
 
 ![](/img/signin.png)
 
