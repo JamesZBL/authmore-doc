@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Authmore',
-  description: '基于 OAuth2.0 协议的跨域认证授权开发套件',
+  description: '基于 OAuth2.0 协议的开放平台认证授权开发套件',
   port: "3000",
   dest: "docs",
   base: "/",
