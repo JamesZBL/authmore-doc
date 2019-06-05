@@ -28,6 +28,19 @@ module.exports = {
           "create-user"
         ]
       }]
+    },
+    repo: 'jameszbl/authmore-framework',
+    repoLabel: '查看源码',
+    docsRepo: 'jameszbl/authmore-doc',
+    docsBranch: 'master',
+    editLinks: true,
+    editLinkText: '在 GitHub 上编辑此页',
+    lastUpdated: '最后更新时间',
+    serviceWorker: {
+      updatePopup: {
+        message: "此页内容刚刚更新了",
+        buttonText: "查看新版"
+      }
     }
   }
 }
