@@ -2,7 +2,7 @@ version: "3"
 
 services:
   doc:
-    image: registry-vpc.cn-beijing.aliyuncs.com/letec/authmore-doc
+    image: jameszbl/authmore-doc
     build:
       context: ..
       dockerfile: Dockerfile
