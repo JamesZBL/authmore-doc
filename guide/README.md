@@ -30,6 +30,7 @@ version: "3"
 services:
   platform:
     image: jameszbl/authmore-platform
+    command: ["--spring.profiles.active=prod"]
     restart: unless-stopped
     networks:
       - authmore
@@ -41,6 +42,7 @@ services:
 
   admin:
     image: jameszbl/authmore-admin
+    command: ["--spring.profiles.active=prod"]
     restart: unless-stopped
     networks:
       - authmore
